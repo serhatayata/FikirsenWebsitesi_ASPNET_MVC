@@ -1,0 +1,40 @@
+﻿@using FikirsenWebSitesi_ASPNET_MVC.Models.entities
+@using PagedList
+@using PagedList.Mvc
+@using FikirsenWebSitesi_ASPNET_MVC.Models
+@model IPagedList<Tbl_Yazilar>
+
+@{
+    ViewBag.Title = "AnaSayfa";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+<link href="~/Content/Main.css" type="text/css" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
+<div class="headerCoverage">
+    <div id="headerIMGDiv">
+        <img src="~/img/HeaderIMG.jpg" class="headerIMG" />
+    </div>
+</div>
+<div class="container-fluid anasayfa-all">
+    @foreach (var yazi in Model)
+    {   
+        <div class="anasayfa-mid">
+            <div class="anasayfa-yazi">
+                <h3 class="anasayfa-baslik">@yazi.YaziBaslik</h3>
+                <p class="yazi-icerik">
+                    @yazi.YaziIcerik
+                </p>
+            </div>
+            <div class="anasayfa-yazar">
+                <span class="yazar-baslik">Yazar</span> :
+                <button>@Html.ActionLink(@yazi.Tbl_Kullanicilar.KullaniciGirisAd, "KullaniciAdiAra", "KullaniciAra", new { p1 = @yazi.Tbl_Kullanicilar.KullaniciGirisAd }, null)</button>
+            </div>
+        </div>
+    }
+    @Html.PagedListPager(Model, _sayfa => Url.Action("AnaSayfa", "AnaSayfa", new { sayfa = _sayfa }))
+</div>
+<script src="~/Content/SessionStorage.js""></script>
+

@@ -1,0 +1,58 @@
+﻿@using FikirsenWebSitesi_ASPNET_MVC.Models.entities
+@model IEnumerable<Tbl_Kullanicilar>
+@{
+    ViewBag.Title = "KullaniciAra";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+<link href="~/Content/Main.css" type="text/css" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"/>
+@using (Html.BeginForm("KullaniciAra", "KullaniciAra", FormMethod.Post))
+{
+<div class="container-fluid profil-all bilgiDegistirPage">
+    <div class="profil-mid">
+        <div class="control">
+            <label>Hangi türde arama yapmak istersiniz?</label>
+            <select class="selectOption" id="select1" onchange="changed1()">
+                <option value="KullaniciID">Kullanıcı ID</option>
+                <option value="KullaniciAd">Ad</option>
+                <option value="KullaniciSoyad">Soyad</option>
+                <option value="KullaniciMail">Mail Adresi</option>
+                <option value="KullaniciGirisAd">Kullanıcı Adı</option>
+            </select>
+            <input required id="dataSent" type="text" class="form-control" placeholder="" name="KullaniciID" autofocus>
+            <button type="submit" class="btn-sm btn-success btn-block buttonAra">Ara</button>
+        </div>
+        <table class="table table-striped table-bordered" id="table1">
+            <thead>
+                <tr>
+                    <th>Kullanıcı ID</th>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                    <th>Mail Adresi</th>
+                    <th>Kullanıcı Adı</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th>@item.KullaniciID</th>
+                        <th>@item.KullaniciAd</th>
+                        <th>@item.KullaniciSoyad</th>
+                        <th>@item.KullaniciMail</th>
+                        <th>@item.KullaniciGirisAd</th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+}
+<script src="~/Content/KayitEkleJS.js"></script>
+<script src="~/Content/AramaYap.js" ></script>
+<script type="text/javascript" src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>

@@ -1,0 +1,44 @@
+﻿@model FikirsenWebSitesi_ASPNET_MVC.Models.entities.Tbl_Yazilar
+
+@{
+    ViewBag.Title = "YaziEkle";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+          integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
+    <link href="~/Content/Main.css" type="text/css" rel="stylesheet" />
+
+    <div class="container">
+        <!-- LOGIN -->
+        <form method="post" action="/Yazilar/YaziEkle" id="kayitForm1" class="anasayfa-all">
+            <div class="form-group yaziEkleDiv">
+                <span class="form-baslik yaziEkle-Anabaslik">Yazı Ekle</span>
+                <span class="" id="yaziEkleDurumu">@ViewBag.dgr</span>
+            </div>
+            <div class="form-group yaziEkleDiv">
+                <h4 class="yaziEkleBaslik">Başlık</h4>
+                <input required type="text" class="form-control" placeholder="Başlık Giriniz" name="YaziBaslik" autofocus>
+                @Html.ValidationMessageFor(m => m.YaziBaslik, "", new { @style = "color:red; font-weight:bold" })
+            </div>
+            <div class="form-group yaziEkleDiv">
+                <h4 class="yaziEkleBaslik"><u>İçerik</u></h4>
+                <textarea required class="form-control" placeholder="İçerik giriniz" name="YaziIcerik" autofocus style="height:200px"></textarea>
+                @Html.ValidationMessageFor(m => m.YaziIcerik, "", new { @style = "color:red; font-weight:bold" })
+            </div>
+            <div class="form-group yaziEkleDiv">
+                <button class="btn btn-block btn-success btn-uye" type="submit" id="btn1">Ekle</button>
+            </div>
+            <div class="form-group" style="font-size:18px; color:red; font-weight:bold; text-align:center;">
+                @ViewBag.msg
+            </div>
+        </form>
+    </div>
+<script src="~/Content/KayitEkleJS.js"></script>

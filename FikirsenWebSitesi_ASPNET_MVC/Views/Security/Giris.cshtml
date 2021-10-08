@@ -1,0 +1,29 @@
+﻿@model FikirsenWebSitesi_ASPNET_MVC.Models.entities.Tbl_Kullanicilar
+@{
+    ViewBag.Title = "Giris";
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+}
+
+<div class="container">
+    <!-- LOGIN -->
+    @using (Html.BeginForm("Giris", "Security", FormMethod.Post))
+    {
+        <h1 class="form__title">Giriş Yap</h1>
+        <div class="form__input-group">
+            <input type="text" class="form__input name_Giris" placeholder="Kullanıcı Adı" name="KullaniciGirisAd" id="name1" autofocus>
+            @Html.ValidationMessageFor(m => m.KullaniciGirisAd, "", new { @style = "color:red; font-weight:bold;" })
+        </div>
+        <div class="form__input-group form-group">
+            <input type="password" name="KullaniciGirisSifre" class="form__input" placeholder="Şifre" autofocus>
+            @Html.ValidationMessageFor(m => m.KullaniciGirisSifre, "", new { @style = "color:red; font-weight:bold;" })
+        </div>
+        <button class="form__button form-group" onclick="sessionTrigger()" type="submit" id="btn1">Giriş Yap</button>
+        <p class="form__text">
+            <a class="form__link" href="/Kayit/KayitYap" id="linkCreateAccount">Hesabın yok mu? Üyel ol!</a>
+        </p>
+        <div class="form-group" style="font-size:18px; color:red; font-weight:bold; text-align:center;">
+            @ViewBag.msg
+        </div>
+    }
+</div>
+<script src="~/Content/SessionStorage.js"></script>

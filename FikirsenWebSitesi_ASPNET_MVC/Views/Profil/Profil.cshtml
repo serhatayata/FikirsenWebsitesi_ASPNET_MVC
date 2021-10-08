@@ -1,0 +1,52 @@
+﻿
+@using FikirsenWebSitesi_ASPNET_MVC.Models.entities
+@using FikirsenWebSitesi_ASPNET_MVC.Models
+
+@model List<Tbl_Kullanicilar>
+@{
+    ViewBag.Title = "Profil";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+<link href="~/Content/Main.css" type="text/css" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
+
+<div class="container-fluid profil-all">
+    @foreach (var ozellik in Model)
+    {
+        <div class="profil-mid">
+            <div class="profil-yazi">
+                <h3 class="profil-baslik">Kişisel Bilgiler</h3>
+                <div>
+                    <p class="yazi-icerik"> 
+                        <label class="profil-label">Adı : </label>
+                        @ozellik.KullaniciAd
+                    </p>
+                </div>
+                <div>
+                    <p class="yazi-icerik">
+                        <label class="profil-label">Soyadı : </label>
+                        @ozellik.KullaniciSoyad
+                    </p>
+                </div>
+                <div>
+                    <p class="yazi-icerik">
+                        <label class="profil-label">Mail : </label>
+                        @ozellik.KullaniciMail
+                    </p>
+                </div>
+                <div>
+                    <p class="yazi-icerik">
+                        <label class="profil-label">Şifre : </label>
+                        ************
+                    </p>
+                </div>
+                    <a href="/Bilgi/BilgiDegistir" class="btn btn-success btn-lg btn-guncelle">Bilgileri Güncelle</a>
+            </div>
+        </div>
+    }
+</div>
+
+

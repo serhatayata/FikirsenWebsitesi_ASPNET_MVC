@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FikirsenWebDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tbl_Kullanicilar">
+    <Key>
+      <PropertyRef Name="KullaniciID" />
+    </Key>
+    <Property Name="KullaniciID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KullaniciAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="KullaniciSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="KullaniciMail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="KullaniciGirisAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="KullaniciGirisSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Tbl_Yazilar" Relationship="Self.FK_Tbl_Yazilar_Tbl_Kullanicilar" FromRole="Tbl_Kullanicilar" ToRole="Tbl_Yazilar" />
+    <NavigationProperty Name="Tbl_Yorumlar" Relationship="Self.FK_Tbl_Yorumlar_Tbl_Kullanicilar" FromRole="Tbl_Kullanicilar" ToRole="Tbl_Yorumlar" />
+  </EntityType>
+  <EntityType Name="Tbl_Yazilar">
+    <Key>
+      <PropertyRef Name="YaziID" />
+    </Key>
+    <Property Name="YaziID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="YaziBaslik" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="YaziIcerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="YazarID" Type="Int32" />
+    <NavigationProperty Name="Tbl_Kullanicilar" Relationship="Self.FK_Tbl_Yazilar_Tbl_Kullanicilar" FromRole="Tbl_Yazilar" ToRole="Tbl_Kullanicilar" />
+    <NavigationProperty Name="Tbl_Yorumlar" Relationship="Self.FK_Tbl_Yorumlar_Tbl_Yazilar" FromRole="Tbl_Yazilar" ToRole="Tbl_Yorumlar" />
+  </EntityType>
+  <EntityType Name="Tbl_Yorumlar">
+    <Key>
+      <PropertyRef Name="YorumID" />
+    </Key>
+    <Property Name="YorumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="YorumIcerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="YorumYazari" Type="Int32" />
+    <Property Name="YaziID" Type="Int32" />
+    <NavigationProperty Name="Tbl_Kullanicilar" Relationship="Self.FK_Tbl_Yorumlar_Tbl_Kullanicilar" FromRole="Tbl_Yorumlar" ToRole="Tbl_Kullanicilar" />
+    <NavigationProperty Name="Tbl_Yazilar" Relationship="Self.FK_Tbl_Yorumlar_Tbl_Yazilar" FromRole="Tbl_Yorumlar" ToRole="Tbl_Yazilar" />
+  </EntityType>
+  <Association Name="FK_Tbl_Yazilar_Tbl_Kullanicilar">
+    <End Role="Tbl_Kullanicilar" Type="Self.Tbl_Kullanicilar" Multiplicity="0..1" />
+    <End Role="Tbl_Yazilar" Type="Self.Tbl_Yazilar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Kullanicilar">
+        <PropertyRef Name="KullaniciID" />
+      </Principal>
+      <Dependent Role="Tbl_Yazilar">
+        <PropertyRef Name="YazarID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Yorumlar_Tbl_Kullanicilar">
+    <End Role="Tbl_Kullanicilar" Type="Self.Tbl_Kullanicilar" Multiplicity="0..1" />
+    <End Role="Tbl_Yorumlar" Type="Self.Tbl_Yorumlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Kullanicilar">
+        <PropertyRef Name="KullaniciID" />
+      </Principal>
+      <Dependent Role="Tbl_Yorumlar">
+        <PropertyRef Name="YorumYazari" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Yorumlar_Tbl_Yazilar">
+    <End Role="Tbl_Yazilar" Type="Self.Tbl_Yazilar" Multiplicity="0..1" />
+    <End Role="Tbl_Yorumlar" Type="Self.Tbl_Yorumlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Yazilar">
+        <PropertyRef Name="YaziID" />
+      </Principal>
+      <Dependent Role="Tbl_Yorumlar">
+        <PropertyRef Name="YaziID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FikirsenWebDBEntities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Tbl_Kullanicilar" EntityType="Self.Tbl_Kullanicilar" />
+    <EntitySet Name="Tbl_Yazilar" EntityType="Self.Tbl_Yazilar" />
+    <EntitySet Name="Tbl_Yorumlar" EntityType="Self.Tbl_Yorumlar" />
+    <AssociationSet Name="FK_Tbl_Yazilar_Tbl_Kullanicilar" Association="Self.FK_Tbl_Yazilar_Tbl_Kullanicilar">
+      <End Role="Tbl_Kullanicilar" EntitySet="Tbl_Kullanicilar" />
+      <End Role="Tbl_Yazilar" EntitySet="Tbl_Yazilar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Yorumlar_Tbl_Kullanicilar" Association="Self.FK_Tbl_Yorumlar_Tbl_Kullanicilar">
+      <End Role="Tbl_Kullanicilar" EntitySet="Tbl_Kullanicilar" />
+      <End Role="Tbl_Yorumlar" EntitySet="Tbl_Yorumlar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Yorumlar_Tbl_Yazilar" Association="Self.FK_Tbl_Yorumlar_Tbl_Yazilar">
+      <End Role="Tbl_Yazilar" EntitySet="Tbl_Yazilar" />
+      <End Role="Tbl_Yorumlar" EntitySet="Tbl_Yorumlar" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

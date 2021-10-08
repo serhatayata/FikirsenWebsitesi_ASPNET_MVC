@@ -1,0 +1,53 @@
+﻿@using FikirsenWebSitesi_ASPNET_MVC.Models.entities
+@model Tbl_Kullanicilar
+@{
+    ViewBag.Title = "SifreDegistir";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+<link href="~/Content/Main.css" type="text/css" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
+
+@using (Html.BeginForm("BilgiDegistir", "Bilgi", FormMethod.Post)) {
+    <div class="container-fluid profil-all bilgiDegistirPage">
+            <div class="profil-mid">
+                <div class="profil-yazi bilgi-degistir-grid">
+                    <h3 class="profil-baslik">Kişisel Bilgiler <span class="" id="yaziEkleDurumu">@ViewBag.dgr</span></h3>
+                    <div>
+                        <label class="profil-label">Kullanıcı ID : </label>
+                            @Html.TextBoxFor(m => m.KullaniciID, new { @class = "form-control", @readonly = "readonly form" })
+                    </div>
+                    <div>
+                        <label class="profil-label">Ad : </label>
+                            @Html.TextBoxFor(m => m.KullaniciAd, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.KullaniciAd, "", new { @style = "color:red; font-weight:bold;" })
+                    </div>
+                    <div>
+                        <label class="profil-label">Soyad : </label>
+                            @Html.TextBoxFor(m => m.KullaniciSoyad, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.KullaniciSoyad, "", new { @style = "color:red; font-weight:bold;" })
+                    </div>
+                    <div>
+                        <label class="profil-label">Mail : </label>
+                            @Html.TextBoxFor(m => m.KullaniciMail, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.KullaniciMail, "", new { @style = "color:red; font-weight:bold;" })
+                    </div>
+                    <div class="grid-gap">
+                        <label class="profil-label">Kullanıcı Adı : </label>
+                            @Html.TextBoxFor(m => m.KullaniciGirisAd, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.KullaniciGirisAd, "", new { @style = "color:red; font-weight:bold;" })
+                    </div>
+                    <div>
+                        <label class="profil-label">Şifre : </label>
+                            @Html.TextBoxFor(m => m.KullaniciGirisSifre, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.KullaniciGirisSifre, "", new { @style = "color:red; font-weight:bold;" })
+                    </div>
+                    <button class="btn btn-lg btn-success btn-click">Değiştir</button>
+                </div>
+            </div>
+    </div>
+}
+<script src="~/Content/KayitEkleJS.js"></script>
+

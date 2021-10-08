@@ -1,0 +1,25 @@
+﻿@model FikirsenWebSitesi_ASPNET_MVC.Models.entities.Tbl_Yazilar
+@{
+    ViewBag.Title = "YaziGetir";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+<div class="container-fluid anasayfa-all">
+    @using (Html.BeginForm("YaziGuncelle", "Yazilar", FormMethod.Post))
+    {
+    <div class="form-group yaziEkleDiv">
+        <label>Yazı ID</label>
+        @Html.TextBoxFor(m => m.YaziID, new { @readonly = "readonly form", @class = "form-control" })
+        <br />
+        <label>Yazı İçerik</label>
+        @Html.TextBoxFor(m => m.YaziBaslik, new { @class = "form-control" })
+        <br />
+        <label>Yazı İçerik</label>
+        @Html.TextAreaFor(m => m.YaziIcerik, new { @class = "form-control", @rows = "15" })
+        <br />
+        <button class="btn btn-success">
+            Güncelle
+        </button>
+    </div>
+    }
+</div>

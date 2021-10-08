@@ -1,0 +1,35 @@
+﻿* {
+    font-family: 'Oxygen', sans-serif;
+}
+body {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Oxygen', sans-serif;
+}
+.container {
+    width: 400px;
+    max-width: 400px;
+    margin: 1rem;
+    padding: 2rem;
+    box-shadow: 0px 0px 40px rgba(0,0,0,0.2);
+    background: #ffff;
+}
+label {
+    font-size:1.4rem;
+}
+input {
+    display:block;
+}
+.giriseDon {
+    text-align:center;
+    font-size:1.6rem;
+    font-weight:bold;
+}
+.btn-uye:hover {
+    background-color:
+}
+.form-baslik {
+    text-align:center;
+}

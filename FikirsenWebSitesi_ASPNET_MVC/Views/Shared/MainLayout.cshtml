@@ -1,0 +1,75 @@
+﻿
+@{
+    Layout = null;
+}
+@using FikirsenWebSitesi_ASPNET_MVC.Models
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fikirsen!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="~/img/ideaICON.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+          integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <link href="~/Content/Main.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <style>
+        * {
+            font-family: 'Oxygen', sans-serif;
+            font-size: 1.7rem;
+        }
+
+        #navbar1, #navbar1 a {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-info" style="position:sticky; top:0" id="navbar-2">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"> <i class="fas fa-globe-asia"></i> Fikirsen!</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/AnaSayfa/AnaSayfa">Ana Sayfa</a></li>
+                <li><a href="/Yazilar/YaziListesi">Yazılarım</a></li>
+                <li><a href="/Profil/Profil">Profil</a></li>
+                <li><a href="/KullaniciAra/KullaniciAra">Kullanıcı Ara</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/Security/CikisYap"><span class="glyphicon glyphicon-log-in"></span> Çıkış</a></li>
+            </ul>
+        </div>
+    </nav>
+    @*NAVBAR FOR MOBILE*@
+    <nav class="navbar sticky-top navbar-danger navbar-expand-lg bg-primary nav-fill nav-tabs" id="navbar-1">
+        <button class="navbar-toggler navbar-light bg-primary" type="button" data-toggle="collapse" data-target="#navbarMenu" id="btn-navbar-1">
+            <span><i class="fas fa-grip-lines"></i></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav nav-primary bg-primary h5">
+                <li class="nav-item"><a href="/AnaSayfa/AnaSayfa" class="nav-link">Ana Sayfa</a></li>
+                <li class="nav-item"><a href="/Yazilar/YaziListesi" class="nav-link">Yazılarım</a></li>
+                <li class="nav-item"><a href="/Profil/Profil" class="nav-link">Profil(@GirisKayit.girisAd)</a></li>
+                <li class="nav-item"><a href="" class="nav-link">Kullanıcı Ara</a></li>
+                <li class="nav-item"><a href="/Security/CikisYap" class="nav-link">Çıkış</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+</body>
+</html>

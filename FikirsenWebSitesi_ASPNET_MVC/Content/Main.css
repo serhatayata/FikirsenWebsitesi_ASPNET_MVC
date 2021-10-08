@@ -1,0 +1,205 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oxygen', sans-serif;
+}
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+body {
+    font-size:16px;
+}
+.headerIMG {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius:15px;
+}
+.headerCoverage {
+    margin-bottom:15px;
+}
+
+#navbar-1 {
+    display: none;
+}
+#navbar-2 {
+    display:block;
+}
+.anasayfa-all {
+    display: flex;
+    flex-direction: column;
+    padding: 3% 5% 0% 5%;
+    height: auto;
+    background: rgb(87,157,246);
+    background: linear-gradient(90deg, rgba(87,157,246,1) 0%, rgba(205,224,232,1) 55%, rgba(102,152,237,1) 100%);
+    box-shadow: 5px 10px #888888;
+    border-radius: 15px;
+    animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+.profil-all {
+    display: flex;
+    flex-direction: column;
+    padding: 3% 5% 0% 5%;
+    height: auto;
+    background: rgb(87,157,246);
+    background: linear-gradient(90deg, rgba(87,157,246,1) 0%, rgba(205,224,232,1) 55%, rgba(102,152,237,1) 100%);
+    box-shadow: 5px 10px #888888;
+    border-radius: 15px;
+    animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+.anasayfa-all div {
+    background: #ffff;
+    margin-bottom: 3%;
+}
+.profil-all div {
+    background: #ffff;
+    margin-bottom: 1% !important;
+}
+.anasayfa-baslik, .profil-baslik {
+    height: auto !important;
+    text-decoration:underline;
+    font-style:italic;
+}
+.anasayfa-yazi,.anasayfa-yazar, .profil-yazi {
+   padding:2% 5% 0 5%;
+   border-radius:15px;
+}
+.anasayfa-mid, .profil-mid {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    box-shadow: 5px 10px #888888;
+    border-radius:15px;
+}
+.yazi-guncelle {
+    padding-left:5% !important;
+}
+.yazi-icerik {
+    margin-top: 20px;
+    font-size: 1.7rem;
+}
+.anasayfa-yazar {
+    font-size:1.8rem;
+}
+.yazar-baslik {
+    text-decoration:underline;
+    font-weight:bold;
+}
+.pagination-container {
+    background-color:transparent !important;
+    width:auto;
+}
+.pagination li {
+    text-align:center;
+}
+.pagination li a {
+    font-size:2.5rem;
+    width:40px;
+    height:auto;
+}
+.btn-yazi-ekle {
+    float:left;
+    width:20%;
+    height:auto;
+    margin-bottom:15px;
+    border-radius:15px;
+}
+.btn-guncelle {
+    margin-top:20px;
+}
+.yaziEkleDiv {
+    background-color: transparent !important;
+}
+.yaziEkleBaslik {
+    text-decoration:underline;
+    font-weight:bold;
+}
+.yaziEkle-Anabaslik {
+    font-size:2.6rem;
+}
+.yaziEkleDurumBasarili {
+    margin-left:30%;
+    font-size:2.6rem;
+    color:green;
+    text-decoration:underline;
+}
+.yaziEkleDurumBasarisiz {
+    margin-left: 30%;
+    font-size: 2.6rem;
+    color: red;
+    text-decoration: underline;
+}
+.profil-label {
+    font-size:20px;
+    margin:10px 20px 0 0;
+    width:120px;
+}
+.bilgiDegistirPage input, .bilgiDegistirPage .btn-click {
+    font-size: 20px;
+    margin: 10px 0px;
+}
+.bilgiDegistirPage div {
+    margin-bottom:10px !important;
+}
+.bilgiDegistirPage label {
+    font-size:18px;
+}
+.control {
+    border-radius:15px;
+    padding: 20px;
+}
+.buttonAra {
+    cursor:pointer;
+    text-decoration:none !important;
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+}
+.control .selectOption {
+        margin-left: 30px;
+        font-size: 20px;
+        width: 20%;
+}
+#table1_wrapper {
+    margin:0 20px;
+}
+
+
+@media screen and (max-width: 768px) {
+    #navbar-1 {
+        display: block !important;
+    }
+
+    #navbar-2 {
+        display: none !important;
+    }
+    #navbarMenu {
+        width:100%;
+        height:auto;
+        overflow:hidden;
+        text-align:center;
+    }
+    #navbarMenu li {
+        border-bottom:1px solid white;
+        padding:10px;
+    }
+    .nav-link {
+        color:white;
+    }
+    #navbar-1 {
+        display: flex !important;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+    }
+    #btn-navbar-1 {
+        width: 15%;
+        height: 40px;
+    }
+}
